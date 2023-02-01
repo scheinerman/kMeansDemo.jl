@@ -1,7 +1,7 @@
 name = "kMeansDemo"
 uuid = "9265c1cc-1539-445e-83d1-b93833069a93"
 authors = ["Ed Scheinerman <ers@jhu.edu>"]
-version = "0.1.0"
+version = "0.0.1"
 
 [deps]
 Plots = "91a5bcdd-55d7-5caf-9e0b-520d859cae80"
