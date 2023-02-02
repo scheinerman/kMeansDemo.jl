@@ -32,6 +32,8 @@ is the same as the given partition, the message `No change` is displayed.
 
 ## Example
 
+### Two Gaussian clusters
+
 ```
 julia> using kMeansDemo
 
@@ -50,4 +52,28 @@ julia> draw_list(a,b)
 ```
 
 The result looks like this: 
-![](./example.png)
+![](./example-1.png)
+
+### Two uniform (square) clusters
+
+```
+julia> pts = double_square(1000, 0.7+0.7im);
+
+julia> a,b = rand_split(pts);
+
+julia> a,b = one_step(a,b);
+
+julia> a,b = one_step(a,b);
+
+julia> a,b = one_step(a,b);
+
+julia> a,b = one_step(a,b);
+
+julia> a,b = one_step(a,b);
+[ Info: No change
+
+julia> draw_list(a,b)
+```
+
+The result lookds like this:
+![](./example-2.png)
