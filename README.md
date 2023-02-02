@@ -52,6 +52,7 @@ julia> draw_list(a,b)
 ```
 
 The result looks like this: 
+
 ![](./example-1.png)
 
 ### Two uniform (square) clusters
@@ -76,4 +77,5 @@ julia> draw_list(a,b)
 ```
 
 The result looks like this:
+
 ![](./example-2.png)
