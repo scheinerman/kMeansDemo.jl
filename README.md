@@ -75,5 +75,5 @@ julia> a,b = one_step(a,b);
 julia> draw_list(a,b)
 ```
 
-The result lookds like this:
+The result looks like this:
 ![](./example-2.png)
