@@ -24,11 +24,16 @@ If `pts` is the list of points, then `a,b = rand_split(pts)` partitions `pts` in
 Invocations of `one_step` looks like this `a,b = one_step(a,b)`. If the new partition 
 is the same as the given partition, the message `No change` is displayed.
 
+## All-in-one operation
+
+Use `a,b = kmeans(pts, max_steps)` to randomly partition the data and then take
+single steps until convergence or `max_steps`, whichever occurs first. 
+
 ## Visualization
 
-`draw_list(pts)` plots all points in `list` as blue dots.
+`draw_data(pts)` plots all points in `list` as blue dots.
 
-`draw_list(a,b)` plots the points in `a` in blue and the points in `b` in red. 
+`draw_data(a,b)` plots the points in `a` in blue and the points in `b` in red. 
 
 ## Example
 
@@ -48,7 +53,7 @@ julia> a,b = one_step(a,b);
 julia> a,b = one_step(a,b);
 [ Info: No change
 
-julia> draw_list(a,b)
+julia> draw_data(a,b)
 ```
 
 The result looks like this: 
@@ -73,7 +78,7 @@ julia> a,b = one_step(a,b);
 julia> a,b = one_step(a,b);
 [ Info: No change
 
-julia> draw_list(a,b)
+julia> draw_data(a,b)
 ```
 
 The result looks like this:

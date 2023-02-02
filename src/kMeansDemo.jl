@@ -1,9 +1,7 @@
 module kMeansDemo
 using Plots, SimpleDrawing
 
-export draw_list, one_step, double_cluster, rand_split, double_square
-
-# export rand_split_list, one_step, nearer_to
+export draw_data, one_step, double_cluster, rand_split, double_square, kmeans
 
 """
     nearer_to(x::Complex, a::Complex, b::Complex)::Int
@@ -70,34 +68,34 @@ function draw_one(z::Complex, the_color = :red)
 end
 
 """
-    draw_list(zlist::Vector, the_color = :red)
+    draw_data(zlist::Vector, the_color = :red)
 
 Draw the points in `zlist` in the color `the_color`.
 """
-function _draw_list(zlist::Vector, the_color = :red)
+function _draw_data(zlist::Vector, the_color = :red)
     for z in zlist
         draw_one(z, the_color)
     end
 end
 
 """
-    draw_list(alist::Vector, blist::Vector)
-    draw_list(alist::Vector)
+    draw_data(alist::Vector, blist::Vector)
+    draw_data(alist::Vector)
 
 Plot one or two lists of points. First list is blue. Second 
 list is red. 
 """
-function draw_list(alist::Vector, blist::Vector)
+function draw_data(alist::Vector, blist::Vector)
     newdraw()
-    _draw_list(alist, :blue)
-    _draw_list(blist, :red)
+    _draw_data(alist, :blue)
+    _draw_data(blist, :red)
     finish()
 end
 
 
-function draw_list(alist::Vector)
+function draw_data(alist::Vector)
     newdraw()
-    _draw_list(alist,:blue)
+    _draw_data(alist,:blue)
     finish()
 end
 
@@ -106,7 +104,7 @@ end
 
 Create `2n` points with `n` chosen Gaussian around 0 and `n` chosen Gaussian around `z`. 
 """
-function double_cluster(n::Int=1000, z::Number = 5)::Vector{Complex{Float64}}
+function double_cluster(n::Int=1000, z::Number = 5)::Vector{ComplexF64}
     p1 = randn(ComplexF64,n)
     p2 = randn(ComplexF64,n) .+ z
     return [p1;p2]
@@ -123,6 +121,35 @@ function double_square(n::Int = 1000, z::Number = 0.7+0.7im)::Vector{ComplexF64}
     p2 = rand(ComplexF64,n) .+ z 
     return [p1;p2]
 end
+
+"""
+    kmeans(pts::Vector, max_steps::Int = 10)
+
+Perform the k-means algorithm on the data with k=2, running at most 
+`max_steps` steps. Return two lists containing the points of the two 
+clusters.
+"""
+function kmeans(pts::Vector, max_steps::Int = 10)
+    a,b = rand_split(pts)
+    steps = 0
+    while true 
+        aa,bb = one_step(a,b)
+        steps += 1
+        print("$steps ")
+        if aa==a && bb==b
+            break 
+        end
+        a = aa
+        b = bb
+        if steps >= max_steps
+            @info "max steps reached"
+            break
+        end
+    end
+
+    return a,b
+end
+
 
 
 end # module kMeansDemo
