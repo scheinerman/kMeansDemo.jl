@@ -1,7 +1,7 @@
 module kMeansDemo
 using Plots, SimpleDrawing
 
-export draw_list, one_step, double_cluster
+export draw_list, one_step, double_cluster, rand_split, double_square
 
 # export rand_split_list, one_step, nearer_to
 
@@ -31,7 +31,13 @@ function split_list(a::Complex{T}, b::Complex{S}, list::Vector) where {S,T}
 end
 
 
-function rand_split_list(list::Vector{Complex{T}}) where {T}
+"""
+    rand_split(list::Vector{T}) where {T}
+
+Split a list of elements into two lists at random:
+`a,b = rand_split(list)`.
+"""
+function rand_split(list::Vector{T}) where {T}
     n = length(list)
     idx = [mod(rand(Int), 2) for _ = 1:n]
 
@@ -56,7 +62,7 @@ function one_step(alist::Vector, blist::Vector)
     return aa, bb
 end
 
-one_step(list::Vector) = rand_split_list(list)
+# one_step(list::Vector) = rand_split_list(list)
 
 
 function draw_one(z::Complex, the_color = :red)
@@ -105,5 +111,18 @@ function double_cluster(n::Int=1000, z::Number = 5)::Vector{Complex{Float64}}
     p2 = randn(ComplexF64,n) .+ z
     return [p1;p2]
 end
+
+"""
+    double_square(n::Int = 1000, z::Number = 0.7+0.7im)::Vector{ComplexF64}
+
+Similar to `double_cluster` but points are uniform in the unit square and offset
+by `z`.
+"""
+function double_square(n::Int = 1000, z::Number = 0.7+0.7im)::Vector{ComplexF64}
+    p1 = rand(ComplexF64,n)
+    p2 = rand(ComplexF64,n) .+ z 
+    return [p1;p2]
+end
+
 
 end # module kMeansDemo

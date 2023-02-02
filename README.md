@@ -18,11 +18,10 @@ For example, `double_cluster(1000, 3+3im)`.
 
 The function `one_step` is used to perform one step of the `k`-means algorithm. 
 
-If `pts` is the list of points, then `a,b = one_step(pts)` should be the first invocation. 
-This simply partitions `pts` into two lists `a` and `b` by randomly 
-assigning points to `a` or `b`.
+If `pts` is the list of points, then `a,b = rand_split(pts)` partitions `pts` into two lists 
+`a` and `b` by randomly assigning points to `a` or `b`.
 
-Subsequent invocations of `one_step` looks like this `a,b = one_step(a,b)`. If the new partition 
+Invocations of `one_step` looks like this `a,b = one_step(a,b)`. If the new partition 
 is the same as the given partition, the message `No change` is displayed.
 
 ## Visualization
@@ -38,7 +37,7 @@ julia> using kMeansDemo
 
 julia> pts = double_cluster(1000, 5);
 
-julia> a,b = one_step(pts);
+julia> a,b = rand_split(pts);
 
 julia> a,b = one_step(a,b);
 
