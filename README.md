@@ -42,17 +42,11 @@ single steps until convergence or `max_steps`, whichever occurs first.
 ```
 julia> using kMeansDemo
 
-julia> pts = double_cluster(1000, 5);
+julia> pts = double_cluster(1000,5);
 
-julia> a,b = rand_split(pts);
-
-julia> a,b = one_step(a,b);
-
-julia> a,b = one_step(a,b);
-
-julia> a,b = one_step(a,b);
-[ Info: No change
-
+julia> a,b = kmeans(pts);
+1 [ Info: No change
+2 
 julia> draw_data(a,b)
 ```
 
@@ -65,19 +59,9 @@ The result looks like this:
 ```
 julia> pts = double_square(1000, 0.7+0.7im);
 
-julia> a,b = rand_split(pts);
-
-julia> a,b = one_step(a,b);
-
-julia> a,b = one_step(a,b);
-
-julia> a,b = one_step(a,b);
-
-julia> a,b = one_step(a,b);
-
-julia> a,b = one_step(a,b);
-[ Info: No change
-
+julia> a,b = kmeans(pts);
+1 2 3 4 [ Info: No change
+5 
 julia> draw_data(a,b)
 ```
 
