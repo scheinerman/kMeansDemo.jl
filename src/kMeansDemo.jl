@@ -1,7 +1,7 @@
 module kMeansDemo
 using Plots, SimpleDrawing
 
-export draw_data, one_step, double_cluster, rand_split, double_square, kmeans
+export draw_data, one_step, rand_split, kmeans
 
 """
     nearer_to(x::Complex, a::Complex, b::Complex)::Int
@@ -95,7 +95,7 @@ end
 
 function draw_data(alist::Vector)
     newdraw()
-    _draw_data(alist,:blue)
+    _draw_data(alist, :blue)
     finish()
 end
 
@@ -107,14 +107,14 @@ Perform the k-means algorithm on the data with k=2, running at most
 clusters.
 """
 function kmeans(pts::Vector, max_steps::Int = 10)
-    a,b = rand_split(pts)
+    a, b = rand_split(pts)
     steps = 0
-    while true 
-        aa,bb = one_step(a,b)
+    while true
+        aa, bb = one_step(a, b)
         steps += 1
         print("$steps ")
-        if aa==a && bb==b
-            break 
+        if aa == a && bb == b
+            break
         end
         a = aa
         b = bb
@@ -124,7 +124,7 @@ function kmeans(pts::Vector, max_steps::Int = 10)
         end
     end
 
-    return a,b
+    return a, b
 end
 
 include("example_maker.jl")

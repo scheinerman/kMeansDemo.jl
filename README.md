@@ -49,12 +49,11 @@ julia> a,b = kmeans(pts);
 2 
 julia> draw_data(a,b)
 ```
-
 The result looks like this: 
 
 ![](./example-1.png)
 
-### Two uniform (square) clusters
+### Two uniform square clusters
 
 ```
 julia> pts = double_square(1000, 0.7+0.7im);
@@ -64,7 +63,27 @@ julia> a,b = kmeans(pts);
 5 
 julia> draw_data(a,b)
 ```
-
 The result looks like this:
 
 ![](./example-2.png)
+
+
+### Two uniform circular clusters
+
+```
+julia> using SimpleDrawing
+
+julia> pts = double_circle(2000, 1+im);
+
+julia> a,b = kmeans(pts);
+1 2 3 4 5 6 7 [ Info: No change
+8 
+julia> draw_data(a,b)
+
+julia> draw_circle(0,0,1,color=:black)
+
+julia> draw_circle(1+im,1,color=:black)
+```
+The result looks like this:
+
+![](./example-3.png)
