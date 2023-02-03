@@ -8,7 +8,7 @@ export draw_data, one_step, double_cluster, rand_split, double_square, kmeans
 
 Return `1` is `x` is closer to `a` or `2` is closer to `b`.
 """
-function nearer_to(x::Complex, a::Complex, b::Complex)
+function nearer_to(x::Complex, a::Complex, b::Complex)::Int
     da = abs(x - a)
     db = abs(x - b)
     return da < db ? 1 : 2

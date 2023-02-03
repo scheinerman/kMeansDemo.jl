@@ -1,6 +1,6 @@
 
 """
-    double_cluster(n::Int=1000, z::Number = 5)::Vector{Complex{Float64}}
+    double_cluster(n::Int=1000, z::Number = 5)::Vector{ComplexF64}
 
 Create `2n` points with `n` chosen Gaussian around 0 and `n` chosen Gaussian around `z`. 
 """
