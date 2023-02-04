@@ -2,6 +2,8 @@
 
 This is a small demonstration project of k-means clustering with k=2 and in two dimensions.
 
+See `kMeans` for a better implementation. This was just a first attempt.
+
 ## Point Sets
 
 Points are represented as complex numbers. Input to the method is a list (`Vector`) of points. 
